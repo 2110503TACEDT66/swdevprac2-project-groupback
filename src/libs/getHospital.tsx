@@ -6,3 +6,5 @@ export default async function getHospital(id:string) {
 
     return await response.json()
 }
+
+

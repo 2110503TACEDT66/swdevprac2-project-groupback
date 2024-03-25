@@ -6,9 +6,8 @@ interface HospitalItem {
     province: string,
     postalcode: string,
     tel: string,
-    picture: string,
-    __v: number,
-    id: string
+    region: string,
+    rating: number,
   }
   
   export  interface HospitalJson {
