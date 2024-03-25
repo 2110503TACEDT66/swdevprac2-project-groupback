@@ -15,7 +15,7 @@ export default function BookingList() {
                         <div className="text-xl">Name: {bookItem.name}</div>
                         <div className="text-sm">SurName: {bookItem.surname}</div>
                         <div className="text-sm">ID: {bookItem.id}</div>
-                        <div className="text-sm">Hospital: {bookItem.hospital}</div>
+                        <div className="text-sm">Hospital: {bookItem.hotel}</div>
                         <div className="text-sm">BookDate: {bookItem.bookDate}</div>
                         <button
                             className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 

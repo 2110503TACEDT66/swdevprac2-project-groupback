@@ -8,23 +8,23 @@ import getHospitals from '@/libs/getHospitals';
 
 export default function CardPanel(){
 
-    const [hospitalResponse,setHospitalsResponse] = useState(null)
+    const [hotelResponse,setHospitalsResponse] = useState(null)
 
     useEffect(()=>{
         const fetchData = async () => {
-            const hospitals = await getHospitals()
-            setHospitalsResponse(hospitals)
+            const hotels = await getHospitals()
+            setHospitalsResponse(hotels)
         }
         fetchData()
     },[])
 
-    const compareReducer = ( compareList:Set<string>,action:{type:string,hospitalName:string})=>{
+    const compareReducer = ( compareList:Set<string>,action:{type:string,hotelName:string})=>{
         switch(action.type){
             case 'add':{
-                return new Set(compareList.add(action.hospitalName))
+                return new Set(compareList.add(action.hotelName))
             }
             case 'remove':{
-                compareList.delete(action.hospitalName)
+                compareList.delete(action.hotelName)
                 return new Set(compareList)
             }
             default:return compareList
@@ -34,40 +34,40 @@ export default function CardPanel(){
     const [compareList,dispatchCompare] = useReducer(compareReducer,new Set<string>())
     const [ratings, setRatings] = useState<{[key: string]: number}>({});
 
-    const setRating = (hospitalName: string, rating: number) => {
+    const setRating = (hotelName: string, rating: number) => {
         setRatings(prevRatings => ({
             ...prevRatings,
-            [hospitalName]: rating
+            [hotelName]: rating
         }));
-        dispatchCompare({type:'add', hospitalName: hospitalName});
+        dispatchCompare({type:'add', hotelName: hotelName});
     }
 
     //MOCK DATA    
-    /*const hospitalRepo = [
+    /*const hotelRepo = [
         {hid:"001",name:"Chulalongkorn Hospital",image:'/img/chula.jpg'}
         ,{hid:"002",name:"Rajavithi Hospital",image:'/img/rajavithi.jpg'}
         ,{hid:"003",name:"Thammasat University Hospital",image:'/img/thammasat.jpg'}
     ]*/
 
-    if(!hospitalResponse) return <div>Hospital Panel is Loading...</div>;
+    if(!hotelResponse) return <div>Hospital Panel is Loading...</div>;
 
 
     return(
         <div>
             <div style={{margin:"20px",display:"flex",flexDirection:"row",flexWrap:"wrap",justifyContent:"space-around",alignContent:"space-around"}}>
                 {
-                    /*hospitalResponse.data.map((hospital:object)=>(
-                        <Link key={hospital.id} href={`/hospital/${hospital.hid}`} className="w-1/5">
-                            <Card hospitalName={hospital.name} imgSrc={hospital.picture} initialRating={5}
+                    /*hotelResponse.data.map((hotel:object)=>(
+                        <Link key={hotel.id} href={`/hotel/${hotel.hid}`} className="w-1/5">
+                            <Card hotelName={hotel.name} imgSrc={hotel.picture} initialRating={5}
                             setRating={setRating}/>
                         </Link>
                     ))*/
                 }
             </div>
             <div className="w-full text-xl font-medium">Compare List:{compareList.size}
-                {Array.from(compareList).map((hospital)=>
-                <div key={hospital} data-testid={`${hospital}`} onClick={() => dispatchCompare({ type: "remove", hospitalName: hospital })}>
-                    {hospital} Rating: {ratings[hospital] || 'Not Rated'} 
+                {Array.from(compareList).map((hotel)=>
+                <div key={hotel} data-testid={`${hotel}`} onClick={() => dispatchCompare({ type: "remove", hotelName: hotel })}>
+                    {hotel} Rating: {ratings[hotel] || 'Not Rated'} 
                 </div>)}
             </div>
         </div>

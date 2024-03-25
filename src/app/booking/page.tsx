@@ -39,7 +39,7 @@ export default function Booking() {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [id, setId] = useState('');
-    const [hospital, setHospital] = useState(getDefaultLocation());
+    const [hotel, setHospital] = useState(getDefaultLocation());
     const [bookDate, setBookDate] = useState<Dayjs | null>(null);
 
     const handleNameChange : ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -53,12 +53,12 @@ export default function Booking() {
     };
 
     const makeBooking = () => {
-        if (hospital && bookDate) {
+        if (hotel && bookDate) {
             const item: BookingItem = {
                 name: name,
                 surname: surname,
                 id: id,
-                hospital: hospital,
+                hotel: hotel,
                 bookDate: bookDate?.format("YYYY/MM/DD")
             }
             dispatch(addBooking(item));
