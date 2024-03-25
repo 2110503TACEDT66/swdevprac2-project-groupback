@@ -22,8 +22,8 @@ export default function Banner () {
         
       />
       <div className={styles.bannerText}>
-        <h1>Vabccine Service Center</h1>
-        <h3>this is VSC</h3>
+        <h1>Hotel booking</h1>
+        <h3>Work in progress</h3>
       </div>
       {
         session? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-x1'>

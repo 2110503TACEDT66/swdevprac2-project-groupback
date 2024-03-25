@@ -32,14 +32,14 @@ export default function Booking() {
         if (nameParam) {
             return nameParam;
         } else {
-            return 'Chulalongkorn Hospital';
+            return 'Chulalongkorn Hotel';
         }
     }
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [id, setId] = useState('');
-    const [hospital, setHospital] = useState(getDefaultLocation());
+    const [hotel, setHotel] = useState(getDefaultLocation());
     const [bookDate, setBookDate] = useState<Dayjs | null>(null);
 
     const handleNameChange : ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -53,12 +53,12 @@ export default function Booking() {
     };
 
     const makeBooking = () => {
-        if (hospital && bookDate) {
+        if (hotel && bookDate) {
             const item: BookingItem = {
                 name: name,
                 surname: surname,
                 id: id,
-                hospital: hospital,
+                hotel: hotel,
                 bookDate: bookDate?.format("YYYY/MM/DD")
             }
             dispatch(addBooking(item));
@@ -66,7 +66,7 @@ export default function Booking() {
             setName('');
             setSurname('');
             setId('');
-            setHospital('Chula');
+            setHotel('Chula');
             setBookDate(null);
         }
     }
@@ -116,7 +116,7 @@ export default function Booking() {
                 <div className='text-md text-left text-gray-600'>
                     DatePicker
                 </div>
-                <LocationDateReserve onDateChange={(value:Dayjs)=>{setBookDate(value)}} onLocationChange={(value:string)=>{setHospital(value)}}/>
+                <LocationDateReserve onDateChange={(value:Dayjs)=>{setBookDate(value)}} onLocationChange={(value:string)=>{setHotel(value)}}/>
             </div>
             <button className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm' name='Book Vaccine'
             onClick={makeBooking}>

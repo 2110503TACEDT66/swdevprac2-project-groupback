@@ -13,9 +13,9 @@ export default function BookingList() {
                 bookItems.map((bookItem) => (
                     <div className="bg-slate-200 rounded px-5 mx-5 py-2 my-2" key={bookItem.id}>
                         <div className="text-xl">Name: {bookItem.name}</div>
-                        <div className="text-sm">SurName: {bookItem.surname}</div>
+                        <div className="text-sm">Surname: {bookItem.surname}</div>
                         <div className="text-sm">ID: {bookItem.id}</div>
-                        <div className="text-sm">Hotel: {bookItem.hospital}</div>
+                        <div className="text-sm">Hotel: {bookItem.hotel}</div>
                         <div className="text-sm">BookDate: {bookItem.bookDate}</div>
                         <button
                             className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
@@ -27,7 +27,7 @@ export default function BookingList() {
                     </div>
                 ))
             ) : (
-                <div className="text-center">No Vaccine Booking</div>
+                <div className="text-center">Nothing here.</div>
             )}
         </div>
     );

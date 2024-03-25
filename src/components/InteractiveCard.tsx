@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 export default function InteractionCard ({children,contentName}:{children: React.ReactNode,contentName:string}) {
   
-  function onHospitalSelected(){
-    alert("You Select " + contentName)
-  }
+  // function onHotelSelected(){
+  //   alert("You Select " + contentName)
+  // }
 
   function onCardMouseAction(event:React.SyntheticEvent){
     if(event.type=='mouseover'){
