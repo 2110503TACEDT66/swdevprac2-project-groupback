@@ -21,6 +21,7 @@ export  interface BookingItem{
     name:string;
     surname:string;
     id:string;
-    hospital:string;
-    bookDate:string;
+    hotel:string;
+    checkIn:string;
+    checkOut:string;
   }
