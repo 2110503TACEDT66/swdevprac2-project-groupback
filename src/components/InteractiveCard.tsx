@@ -24,7 +24,7 @@ export default function InteractionCard ({children,contentName}:{children: React
   }
   
   return (
-    <div className='w-full h-[300px] rounded-lg shadow-lg  bg-white' 
+    <div className='w-[150px] h-[300px] rounded-lg shadow-lg  bg-white' 
     //'w-1/5 h-[300px] rounded-lg shawdow-lg' {styles.card}
     onMouseOver={(e)=>onCardMouseAction(e)}
     onMouseOut={(e)=>onCardMouseAction(e)}>
