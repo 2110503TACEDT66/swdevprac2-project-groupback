@@ -18,9 +18,9 @@ interface HospitalItem {
   }
 
 export  interface BookingItem{
-    name:string;
-    surname:string;
-    id:string;
-    hotel:string;
-    bookDate:string;
+    checkIn:Date;
+    checkOut:Date;
+    user:Object;
+    hotel:Object;
+    createdAt:Date;
   }
