@@ -16,10 +16,10 @@ export default async function HotelDetailPage({params}:{params:{hid:string}}){
         <main className="text-center p-5" style={{ marginTop: '60px' }}>
             <h1 className="text-lg font-medium">{hotelDetail.data.name}</h1>
             <div className="flex flex-row my-5">
-                <Image src={hotelDetail.data.picture}
+                {/* <Image src={hotelDetail.data.picture}
                     alt="Hotel Image"
                     width={0} height={0} sizes="100vw"
-                    className="rounded-lg w-[30%]"/>
+                    className="rounded-lg w-[30%]"/> */}
                 <div className="flex flex-col mx-5 my-1">
                     <div className="text-md text-left my-1">Name: {hotelDetail.data.name}</div>
                     <div className="text-md text-left my-1">Address: {hotelDetail.data.address}</div>
@@ -29,7 +29,7 @@ export default async function HotelDetailPage({params}:{params:{hid:string}}){
                 
                     <Link href={`/booking?id=${params.hid}&name=${hotelDetail.data.name}`}>
                         <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-whilte shadow-sm">
-                            Book Vaccine
+                           Hotel
                         </button>
                     </Link>
                 

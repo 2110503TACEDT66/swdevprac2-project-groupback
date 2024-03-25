@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    env: {
+        BACKEND: "https://presentation-day-1-groupback.vercel.app"
+    },
     images: {
         domains: ['drive.google.com']
     },
