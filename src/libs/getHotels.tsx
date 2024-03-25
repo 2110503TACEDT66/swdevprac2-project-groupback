@@ -1,6 +1,6 @@
 import { resolve } from "path"
 
-export default async function getHotel() {
+export default async function getHotels() {
     
     //await new Promise((resolve)=>setTimeout(resolve,1000))
     const response = await fetch(`${process.env.BACKEND}/api/v1/hotels`)

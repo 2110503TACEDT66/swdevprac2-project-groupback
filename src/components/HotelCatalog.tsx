@@ -35,7 +35,7 @@ export  default async function HotelCatalog({ hotelsJson }: { hotelsJson: Promis
 
     return (
         <>
-            Explore {hotelResponse.count} models in our catalog
+            Explore {hotelResponse.count} places in our catalog
             <div style={{ margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", alignContent: "space-around" }}>
             {hotelResponse.data.map((hotel: any) => (
                 <Link key={`/hotel/${hotel.id}`} href={`/hotel/${hotel.id}`} passHref>
