@@ -29,8 +29,9 @@ export default function Card({ hotelName, setRating, initialRating }: { hotelNam
           id={`${hotelName} Rating`}
           name={`${hotelName} Rating`}
           data-testid={`${hotelName} Rating`}
-          value={ratingValue}
+          value={ratingValue ? Math.round(ratingValue * 10) / 10 : 0}
           onChange={handleChange}
+          precision={0.1}
         />}
         
       </div>
