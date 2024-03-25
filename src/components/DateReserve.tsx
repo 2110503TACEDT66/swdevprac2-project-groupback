@@ -27,9 +27,9 @@ export default function LocationDateReserve({onDateChange,onLocationChange}:{onD
 
             <Select variant="standard" name="location" id="location" className="h-[2em] w-[200px] "
             value={location} onChange={(e)=>{setLocation(e.target.value);onLocationChange(e.target.value)}}>
-                <MenuItem value="Chula">Chulalongkorn Hospital</MenuItem>
-                <MenuItem value="Rajavithi">Rajavithi Hospital </MenuItem>
-                <MenuItem value="Thammasat">Thammasat University Hospital</MenuItem>
+                <MenuItem value="Chula">Chulalongkorn Hotel</MenuItem>
+                <MenuItem value="Rajavithi">Rajavithi Hotel </MenuItem>
+                <MenuItem value="Thammasat">Thammasat University Hotel</MenuItem>
 
             </Select>
         </div>
