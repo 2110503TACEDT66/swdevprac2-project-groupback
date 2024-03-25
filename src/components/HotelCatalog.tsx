@@ -6,20 +6,43 @@ import { HotelJson } from '../../interface';
 
 export  default async function HotelCatalog({ hotelsJson }: { hotelsJson: Promise<HotelJson> }) {
 
-    const hotelsJsonReady = await hotelsJson;
+    const [hotelResponse, setHotelsResponse] = useState<HotelJson | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const hotels = await hotelsJson;
+                setHotelsResponse(hotels);
+            } catch (error) {
+                console.error('Error fetching hotels:', error);
+            }
+        };
+        fetchData();
+    }, [hotelsJson]);
+
+    const [ratings, setRatings] = useState<{[key: string]: number}>({});
+
+    const setRating = (hotelName: string, rating: number) => {
+        setRatings(prevRatings => ({
+            ...prevRatings,
+            [hotelName]: rating
+        }));
+    };
+
+    if (!hotelResponse) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
-            Explore {hotelsJsonReady.count} models in our catalog
+            Explore {hotelResponse.count} models in our catalog
             <div style={{ margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", alignContent: "space-around" }}>
-                {
-                    hotelsJsonReady.data.map((hotel: any) => (
-                        <Link key={`/hotel/${hotel.id}`} href={`/hotel/${hotel.id}`} className="w-1/5">
-                            <Card hotelName={hotel.name} imgSrc={hotel.picture}/>
-                        </Link>
-                    ))
-                }
+            {hotelResponse.data.map((hotel: any) => (
+                <Link key={`/hotel/${hotel.id}`} href={`/hotel/${hotel.id}`} passHref>
+                <Card hotelName={hotel.name} initialRating={hotel.rating} setRating={setRating}/>
+                </Link>
+                ))}
             </div>
         </>
-    )
-}
+    );
+};
