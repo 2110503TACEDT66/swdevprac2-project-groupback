@@ -14,5 +14,7 @@
     top: 100px;
     z-index: 20;
     text-align: center;
-    color: red;
+    color: rgb(137, 54, 54);
+    font-size: 40px;
+    font-weight: bold;
 }
