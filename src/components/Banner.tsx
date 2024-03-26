@@ -23,7 +23,7 @@ export default function Banner () {
       />
       <div className={styles.bannerText}>
         <div className='drop-shadow-border'>
-        <h1>HotelHub</h1>
+        <h1>Hotel Hub</h1>
         <h3>booking for you</h3>
         </div>
       </div>
