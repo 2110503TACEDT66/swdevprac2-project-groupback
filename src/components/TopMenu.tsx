@@ -16,7 +16,7 @@ export default async function TopMenu(){
                 session?
                 <div className="flex flex-row h-full">
                     <TopMenuItem title={session.user?.name} pageRef="/api/auth/signout"/>
-                    <TopMenuItem title='My Booking' pageRef='/mybooking'/>
+                    <TopMenuItem title='My Bookings' pageRef='/mybooking'/>
                     <TopMenuItem title='Book Hotel' pageRef='/booking'/>
                 </div>
                 :
