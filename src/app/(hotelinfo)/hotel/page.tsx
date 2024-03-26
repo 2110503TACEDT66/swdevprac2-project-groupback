@@ -12,8 +12,7 @@ export default function hotel(){
             <h1>Select Your hotel</h1>
             <Suspense fallback = {<p>Loading...<LinearProgress/></p>}> 
             <HotelCatalog hotelsJson={hotels}/>
-            </Suspense>
-             
+            </Suspense>   
         </main>
     )
 

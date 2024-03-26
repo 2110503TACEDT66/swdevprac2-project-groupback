@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 
-export default function InteractionCard ({children,contentName}:{children: React.ReactNode,contentName:string}) {
+export default function InteractionCard ({children}:{children: React.ReactNode}) {
   
   // function onHotelSelected(){
   //   alert("You Select " + contentName)
