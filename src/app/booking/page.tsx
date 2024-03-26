@@ -53,6 +53,7 @@ export default function Booking() {
             
             <div className = "text-x1 front-medium" >Hotel Booking</div>
 
+            <div className="w-1/3">
             <TextField
                 id="hotel"
                 label="Hotel ID"
@@ -64,6 +65,7 @@ export default function Booking() {
                 value={hotel}
                 onChange={handleHotelChange}
             />
+            </div>
 
             <div className='w-fit space-y-2'>
                 <div className='text-md text-left mt-[1em] text-gray-600'>
