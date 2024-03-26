@@ -32,13 +32,15 @@ export  default async function HotelCatalog({ hotelsJson }: { hotelsJson: Promis
         return <div>Loading...</div>;
     }
 
+
+
     return (
         <>
             Explore {hotelResponse.count} places in our catalog
             <div style={{ margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", alignContent: "space-around" }}>
             {hotelResponse.data.map((hotel: any) => (
                 <Link key={`/hotel/${hotel.id}`} href={`/hotel/${hotel.id}`} passHref>
-                <Card hotelName={hotel.name} initialRating={hotel.rating} setRating={setRating}/>
+                <Card hotelName={hotel.name} initialRating={hotel.rating || 0.1} setRating={setRating}/>
                 </Link>
                 ))}
             </div>
