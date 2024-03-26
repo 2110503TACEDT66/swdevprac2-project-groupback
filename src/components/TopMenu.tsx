@@ -13,19 +13,17 @@ export default async function TopMenu(){
         <div className={styles.munucontainer}>
             <Image src={'/img/logo.png'} className={styles.logoimg} alt='logo' 
             width={0} height={0} sizes='100vh'/>
-            <TopMenuItem title='Book a reservation' pageRef='/booking'/>
-            <div className='flex items-center absolute left-0 h-full'>
+            <div className='flex flex-row absolute left-0 top-0 h-full text-center align-center'>
+                
             {
                 session?
-                <div>
-                    <Link href="/api/auth/signout">
-                        <div className='h-full px-2 text-cyan-600 text-sm'>
-                            {session.user?.name}</div></Link>
-                            <TopMenuItem title='My Booking' pageRef='/mybooking'/>
-                        </div>
+                <div className="flex flex-row h-full">
+                    <TopMenuItem title={session.user?.name} pageRef="/api/auth/signout"/>
+                    <TopMenuItem title='My Booking' pageRef='/mybooking'/>
+                    <TopMenuItem title='Book a reservation' pageRef='/booking'/>
+                </div>
                 :
-                <Link href="/api/auth/signin"><div className='h-full px-2 text-cyan-600 text-sm'>
-                    Sign In</div></Link>
+                <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
             }
             </div>
         </div>

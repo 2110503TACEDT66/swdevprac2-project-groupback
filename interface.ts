@@ -18,9 +18,8 @@ interface HotelItem {
   }
 
 export  interface BookingItem{
-    name:string;
-    surname:string;
-    id:string;
+    user:string;
     hotel:string;
-    bookDate:string;
+    checkIn:string;
+    checkOut:string;
   }

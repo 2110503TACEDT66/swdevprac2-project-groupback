@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './banner.module.css';
 import {useSession} from 'next-auth/react'
+import getUserProfile from '@/libs/getUserProfile';
 
 export default function Banner () {
   const covers =['/img/cover.jpg','/img/cover2.jpg','/img/cover3.jpg','/img/cover4.jpg']
@@ -26,7 +27,7 @@ export default function Banner () {
         <h3>Work in progress</h3>
       </div>
       {
-        session? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-x1'>
+        session? <div className='z-20 absolute top-5 right-10 font-semibold text-cyan-800 text-x1'>
           Welcome {session.user?.name}</div>
           :null
       }

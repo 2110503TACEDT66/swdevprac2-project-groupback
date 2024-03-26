@@ -1,3 +1,5 @@
+import getUserProfile from "./getUserProfile"
+
 export default async function userLogin(userEmail:string,userPassword:string) {
     
     const response = await fetch(`${process.env.BACKEND}/api/v1/auth/login`,{
@@ -13,5 +15,7 @@ export default async function userLogin(userEmail:string,userPassword:string) {
     if(!response.ok){
         throw new Error("Failed to log-in")
     }
-    return await response.json()
+    const token = (await response.json()).token
+    const profile = await getUserProfile(token)
+    return {id: profile.data._id, token: token, name: profile.data.name}
 }
