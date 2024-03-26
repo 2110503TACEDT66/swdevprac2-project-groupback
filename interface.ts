@@ -29,3 +29,10 @@ export interface BookingJson {
   count: number,
   data: BookingItem[]
 }
+
+export interface UserRegisterJson {
+  name:string,
+  email:string,
+  password:string,
+  tel:string,
+}
