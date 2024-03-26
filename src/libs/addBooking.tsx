@@ -14,5 +14,5 @@ export default async function addBooking(data:BookingItem, token:string) {
             checkOut: data.checkOut
         })
     })
-    .then((prev) => {if(prev.ok) return prev.json(); else return {sucess: false}})
+    .then((prev) => {if(prev.ok) return prev.json(); else return {success: false}})
 }

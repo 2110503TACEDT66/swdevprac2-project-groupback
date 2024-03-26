@@ -23,3 +23,9 @@ export  interface BookingItem{
     checkIn:string;
     checkOut:string;
   }
+
+export interface BookingJson {
+  success: boolean,
+  count: number,
+  data: BookingItem[]
+}

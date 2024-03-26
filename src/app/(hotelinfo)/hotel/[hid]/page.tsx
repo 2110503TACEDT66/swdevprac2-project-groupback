@@ -15,6 +15,7 @@ export default async function HotelDetailPage({params}:{params:{hid:string}}){
     return(
         <main className="text-center p-5" style={{ marginTop: '60px' }}>
             <h1 className="text-lg font-medium">{hotelDetail.data.name}</h1>
+            <p className="text-[0.5em] text-gray-500">{hotelDetail.data._id}</p>
             <div className="flex flex-row my-5">
                 {/* <Image src={hotelDetail.data.picture}
                     alt="Hotel Image"
@@ -29,7 +30,7 @@ export default async function HotelDetailPage({params}:{params:{hid:string}}){
                 
                     <Link href={`/booking?id=${params.hid}&name=${hotelDetail.data.name}`}>
                         <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-whilte shadow-sm">
-                           Hotel
+                           Book a stay here
                         </button>
                     </Link>
                 
