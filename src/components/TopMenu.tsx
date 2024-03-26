@@ -19,7 +19,10 @@ export default async function TopMenu(){
                     <TopMenuItem title='Book Hotel' pageRef='/booking'/>
                 </div>
                 :
-                <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
+                <div className="flex flex-row h-full">
+                    <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
+                    <TopMenuItem title="Register" pageRef="/newuser"/>
+                </div>
             }
             </div>
             <div className='flex flex-row-reverse absolute right-0 top-0 w-[50%] h-full text-center align-center'>
