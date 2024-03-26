@@ -4,6 +4,7 @@ import { BookingJson } from "../../interface";
 import { useSession } from "next-auth/react";
 import deleteBooking from "@/libs/deleteBooking";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function BookingList(bookItems:any) {
     const data = bookItems ? bookItems.bookItems as BookingJson : null;
@@ -21,12 +22,19 @@ export default function BookingList(bookItems:any) {
                         <div className="text-sm">Check-In: {bookItem.checkIn}</div>
                         <div className="text-sm">Check-Out: {bookItem.checkOut}</div>
                         <button
-                            className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
+                            className="block rounded-md bg-red-600 hover:bg-indigo-600 px-3 py-2 
                             text-white shadow-sm"
                             onClick={async () => {await deleteBooking(session?.user.token, bookItem._id); router.refresh()}}
                         >
-                            Remove from Booking
+                            Delete Booking
                         </button>
+                        <Link href={`/booking/edit?id=${bookItem._id}&hotel=${bookItem.hotel._id}`}>
+                            <button
+                                className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 
+                                text-white shadow-sm">
+                                Edit Booking
+                            </button>
+                        </Link>
                     </div>
                 ))
             ) : (
