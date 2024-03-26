@@ -11,7 +11,6 @@ export default function Home() {
     //<h1 className="text-sm bg-blue-500">Hello</h1>
     <main className={styles.main}>
       <Banner />
-      <PromoteCard></PromoteCard>
       
     </main>
   );
