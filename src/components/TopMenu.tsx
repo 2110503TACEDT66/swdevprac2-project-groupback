@@ -3,10 +3,12 @@ import Image from 'next/image'
 import TopMenuItem from './TopMenuItem'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { headers } from "next/headers";
 
 export default async function TopMenu(){
-    
     const session = await getServerSession(authOptions)
+    const headersList = headers();
+    console.log(headersList.get("next-url"));
 
     return(
         <div className={styles.munucontainer}>
@@ -14,13 +16,13 @@ export default async function TopMenu(){
             {
                 session?
                 <div className="flex flex-row h-full">
-                    <TopMenuItem title={session.user?.name} pageRef="/api/auth/signout"/>
+                    <TopMenuItem title={session.user?.name} pageRef={"/api/auth/signout?callbackUrl=/"}/>
                     <TopMenuItem title='My Bookings' pageRef='/mybooking'/>
                     <TopMenuItem title='Book Hotel' pageRef='/booking'/>
                 </div>
                 :
                 <div className="flex flex-row h-full">
-                    <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
+                    <TopMenuItem title="Sign In" pageRef="/api/auth/signin?callbackUrl=/"/>
                     <TopMenuItem title="Register" pageRef="/newuser"/>
                 </div>
             }

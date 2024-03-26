@@ -15,8 +15,6 @@ export default async function HotelDetailPage({params}:{params:{hid:string}}){
                     <div className="text-md my-1">District: {hotelDetail.data.district}</div>
                     <div className="text-md my-1">Province: {hotelDetail.data.province}</div>
                     <div className="text-md my-1">Tel: {hotelDetail.data.tel}</div>
-                    <div className="text-md my-1">
-            </div>
             <div className="text-md my-1 mt-auto">
                 <Link href={`/booking?id=${params.hid}&name=${hotelDetail.data.name}`}>
                     <button className="block rounded-md bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 mt-3 shadow-sm">                    Book a stay here
