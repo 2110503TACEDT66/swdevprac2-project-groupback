@@ -24,7 +24,7 @@ export default async function TopMenu(){
             }
             </div>
             <div className='flex flex-row-reverse absolute right-0 top-0 w-[50%] h-full text-center align-center'>
-            <Image src={'/img/logo.png'} className={styles.logoimg} alt='logo' 
+            <Image src={'/img/logo2.png'} className={styles.logoimg} alt='logo' 
             width={0} height={0} sizes='100vh'/>
             <TopMenuItem title="Home" pageRef="/"/>
             <TopMenuItem title="Hotels" pageRef="/hotel"/>
