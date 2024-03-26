@@ -11,7 +11,7 @@ export default async function TopMenu(){
 
     return(
         <div className={styles.munucontainer}>
-            <Image src={'/img/logo.png'} className={styles.logoimg} alt='logo' 
+            <Image src={'/img/logo2.png'} className={styles.logoimg} alt='logo' 
             width={0} height={0} sizes='100vh'/>
             <div className='flex flex-row absolute left-0 top-0 h-full text-center align-center'>
                 
