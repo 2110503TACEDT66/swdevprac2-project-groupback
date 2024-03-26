@@ -5,7 +5,12 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow: {
+        "border": ["1px 1px 0px #ffffff", "-1px -1px 0px #ffffff", "-1px 1px 0px #ffffff", "1px -1px 0px #ffffff",
+                  "0px 1px 0px #ffffff", "0px -1px 0px #ffffff", "-1px 0px 0px #ffffff", "1px 0px 0px #ffffff"]
+      }
+    },
   },
   plugins: [],
 }

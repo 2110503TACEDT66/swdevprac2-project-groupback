@@ -23,8 +23,10 @@ export default function Banner () {
         
       />
       <div className={styles.bannerText}>
+        <div className='drop-shadow-border'>
         <h1>HotelHub</h1>
         <h3>booking for you</h3>
+        </div>
       </div>
       {
         session? <div className='z-20 absolute top-5 right-10 font-semibold text-cyan-800 text-x1'>
