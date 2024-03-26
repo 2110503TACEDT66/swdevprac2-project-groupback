@@ -12,7 +12,7 @@ export default function Card({ hotelName, setRating, initialRating }: { hotelNam
   };
     
   return (
-    <InteractionCard contentName={hotelName}>
+    <InteractionCard>
       <div className='w-full h-[70%] relative rounded-t-lg '>
         <Image src="/img/hotel.jpg"  alt="card p"  fill = {true} className='object-cover rounded-t-lg'
         />
