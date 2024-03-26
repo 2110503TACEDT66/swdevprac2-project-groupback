@@ -11,11 +11,14 @@ import { Dayjs } from 'dayjs';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/redux/store';
 import { BookingItem } from '../../../interface';
-import { addBooking } from '@/redux/features/bookSlice';
+import addBooking from '@/libs/addBooking';
+import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import dayjs from 'dayjs';
 
 
 export default function Booking() {
+    const { data:session } = useSession();
 
     //const session = await getServerSession(authOptions)
     //if(!session || !session.user.token) return null
@@ -36,91 +39,70 @@ export default function Booking() {
         }
     }
 
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [id, setId] = useState('');
     const [hotel, setHotel] = useState(getDefaultLocation());
-    const [bookDate, setBookDate] = useState<Dayjs | null>(null);
+    const [checkIn, setCheckIn] = useState<Dayjs | null>(null);
+    const [checkOut, setCheckOut] = useState<Dayjs | null>(null);
 
-    const handleNameChange : ChangeEventHandler<HTMLInputElement> = (event) => {
-        setName(event.target.value); 
-    };
-    const handleSurnameChange : ChangeEventHandler<HTMLInputElement> = (event) => {
-        setSurname(event.target.value); 
-    };
-    const handleIdChange : ChangeEventHandler<HTMLInputElement> = (event) => {
-        setId(event.target.value); 
-    };
 
-    const makeBooking = () => {
-        if (hotel && bookDate) {
+    const makeBooking = async () => {
+        if (session && hotel && checkIn && checkOut) {
             const item: BookingItem = {
-                name: name,
-                surname: surname,
-                id: id,
+                user: session.user._id,
                 hotel: hotel,
-                bookDate: bookDate?.format("YYYY/MM/DD")
+                checkIn: checkIn.format("YYYY-MM-DDTHH:MM:ss.000Z"),
+                checkOut: checkOut.format("YYYY-MM-DDTHH:MM:ss.000Z")
             }
-            dispatch(addBooking(item));
+            const response = await addBooking(item, session.user.token);
+            console.log(response);
 
-            setName('');
-            setSurname('');
-            setId('');
-            setHotel('Chula');
-            setBookDate(null);
+            // dispatch(addBooking(item));
+
+            // setName('');
+            // setSurname('');
+            // setId('');
+            // setHotel('Chula');
+            // setBookDate(null);
         }
     }
+
+    const handleHotelChange : ChangeEventHandler<HTMLInputElement> = (event) => {
+        setHotel(event.target.value); 
+    };
     
     return(
         <main className='w-[100%] flex flex-col items-center space-y-4 m-5 p-5' style={{ marginTop: '70px' }}>
             
-            <div className = "text-x1 front-medium" >Vaccine Booking</div>
+            <div className = "text-x1 front-medium" >Hotel Booking</div>
 
             <TextField
-                id="name"
-                label="Name"
+                id="hotel"
+                label="Hotel ID"
                 variant="standard"
-                name="Name"
+                name="hotel_id"
                 fullWidth
                 margin="normal"
                 className="h-[2em] w-[200px]"
-                value={name}
-                onChange={handleNameChange}
-            />
-
-            <TextField
-                id="lastname"
-                label="Lastname"
-                variant="standard"
-                name="Lastname"
-                fullWidth
-                margin="normal"
-                className="h-[2em] w-[200px]"
-                value={surname}
-                onChange={handleSurnameChange}
-            />
-
-            <TextField
-                id="citizen-id"
-                label="Citizen ID"
-                variant="standard"
-                name="Citizen ID"
-                fullWidth
-                margin="normal"
-                className="h-[2em] w-[200px]"
-                value={id}
-                onChange={handleIdChange}
+                value={hotel}
+                onChange={handleHotelChange}
             />
 
             <div className='w-fit space-y-2'>
                 <div className='text-md text-left text-gray-600'>
                     DatePicker
                 </div>
-                <LocationDateReserve onDateChange={(value:Dayjs)=>{setBookDate(value)}} onLocationChange={(value:string)=>{setHotel(value)}}/>
+                <LocationDateReserve onDateChange={(value:Dayjs)=>{setCheckIn(value)}} onLocationChange={(value:string)=>{setHotel(value)}}/>
             </div>
+
+            <div className='w-fit space-y-2'>
+                <div className='text-md text-left text-gray-600'>
+                    DatePicker
+                </div>
+                <LocationDateReserve onDateChange={(value:Dayjs)=>{setCheckOut(value)}} onLocationChange={(value:string)=>{setHotel(value)}}/>
+            </div>
+
             <button className='block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm' name='Book Vaccine'
             onClick={makeBooking}>
-                Book Vaccine
+                Book Hotel
             </button>
             
         </main>

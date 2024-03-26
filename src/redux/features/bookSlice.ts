@@ -11,13 +11,9 @@ export const bookSlice = createSlice({
     name:"booking",
     initialState,
     reducers:{
-        addBooking : (state,action:PayloadAction<BookingItem>)=>{
-            const existingBookingIndex = state.bookItems.findIndex(item => item.id === action.payload.id);
-            if (existingBookingIndex !== -1) {
-                state.bookItems[existingBookingIndex] = action.payload;
-            } else {
-                state.bookItems.push(action.payload);
-            }
+        addBooking : async (state,action:PayloadAction<BookingItem>)=>{
+            console.log(action.payload);
+            await fetch(`${process.env.BACKEND}/api/v1/hotels/${action.payload.hotel}`)
         },
         removeBooking : (state,action:PayloadAction<string>)=>{
             state.bookItems = state.bookItems.filter(item => item.id !== action.payload);
