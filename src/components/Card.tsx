@@ -25,6 +25,7 @@ export default function Card({ hotelName, setRating, initialRating }: { hotelNam
       <div className='block h-[10%] shadow-sm rating-horizontal'>
         
         {setRating && initialRating && <Rating
+          readOnly
           onClick={(e)=>{e.stopPropagation();}}
           id={`${hotelName} Rating`}
           name={`${hotelName} Rating`}
