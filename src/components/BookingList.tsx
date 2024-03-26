@@ -1,12 +1,6 @@
 "use client"
 
-import { AppDispatch, useAppSelector } from "@/redux/store";
-import { useDispatch } from "react-redux";
-import { removeBooking } from "@/redux/features/bookSlice";
-import { ClassNames } from "@emotion/react";
-import getBookings from "@/libs/getBookings";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { BookingItem, BookingJson } from "../../interface";
+import { BookingJson } from "../../interface";
 import { useSession } from "next-auth/react";
 import deleteBooking from "@/libs/deleteBooking";
 import { useRouter } from "next/navigation";

@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import styles from './card.module.css'
 import Image from 'next/image';
 import InteractionCard from './InteractiveCard';
 import Rating from '@mui/material/Rating';

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './banner.module.css';
 import {useSession} from 'next-auth/react'
-import getUserProfile from '@/libs/getUserProfile';
 
 export default function Banner () {
   const covers =['/img/cover5.jpg','/img/cover6.jpg','/img/cover7.jpg','/img/cover8.jpg']

@@ -1,6 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { BookingItem } from "../../interface";
-import { getServerSession } from "next-auth";
 
 export default async function addBooking(data:BookingItem, token:string) {
     return fetch(`${process.env.BACKEND}/api/v1/hotels/${data.hotel}/bookings`, {

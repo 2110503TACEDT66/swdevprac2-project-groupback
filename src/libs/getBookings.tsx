@@ -1,5 +1,3 @@
-import { BookingJson } from "../../interface";
-
 export default async function getBookings(token:string) {
     return fetch(`${process.env.BACKEND}/api/v1/bookings`, {
         method: "GET",
